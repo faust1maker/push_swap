@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:52:35 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/17 10:49:32 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:38:29 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,20 @@ void	ft_lstadd_front(t_list **pile, t_list *new)
 {
 	if (pile != NULL)
 	{
-		if (*pile != NULL)
-			new->next = *pile;
+		new->next = *pile;
 		*pile = new;
 	}
+}
+
+void	ft_pop_element(t_list **pile)
+{
+	t_list	*temp;
+
+	if (*pile == NULL)
+		return ;
+	temp = *pile;
+	*pile = (*pile)->next;
+	free(temp);
 }
 
 t_list	*ft_master_parser(char **av)
@@ -65,9 +75,7 @@ t_list	*ft_master_parser(char **av)
 	int		input;
 	t_list	*pile;
 
-	pile = malloc(sizeof(*pile));
-	if (!pile)
-		return (NULL);
+	pile = NULL;
 	i = 1;
 	input = 0;
 	while (av[i])
@@ -76,5 +84,7 @@ t_list	*ft_master_parser(char **av)
 		ft_lstadd_front(&pile, ft_lstnew(input));
 		i++;
 	}
+	if (!ft_check_duplicates(pile))
+		return (NULL);
 	return (pile);
 }

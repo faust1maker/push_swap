@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_movements1.c                                    :+:      :+:    :+:   */
+/*   ps_swappers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 10:54:15 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/17 11:59:14 by fbrisson         ###   ########.fr       */
+/*   Created: 2023/01/17 12:04:34 by fbrisson          #+#    #+#             */
+/*   Updated: 2023/01/17 12:39:34 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,39 @@ void	swap_a(t_list **stack_a)
 		previous->content = previous->next->content;
 		previous->next->content = temp;
 	}
-	printf("sa");
+	printf("sa\n");
 }
+
+void	swap_b(t_list **stack_b)
+{
+	t_list *previous;
+	int		temp;
+
+	if ((*stack_b == NULL) || ((*stack_b)->next == NULL))
+		return ;
+	previous = ft_get_previous(*stack_b, (*stack_b)->next);
+	if (previous == NULL)
+	{
+		temp = (*stack_b)->content;
+		previous->content = previous->next->content;
+		previous->next->content = temp;
+	}
+	else if (previous != NULL)
+	{
+		temp = previous->content;
+		previous->content = previous->next->content;
+		previous->next->content = temp;
+	}
+	printf("sb\n");
+}
+
+/*
+
+void	double_swap(t_list **stack_a, t_list **stack_b)
+{
+	swap_a;
+	swap_b;
+	printf("ss\n");
+}
+
+*/
