@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:04:34 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/17 12:39:34 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/20 10:05:15 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,9 @@ void	swap_b(t_list **stack_b)
 	printf("sb\n");
 }
 
-/*
-
 void	double_swap(t_list **stack_a, t_list **stack_b)
 {
-	swap_a;
-	swap_b;
+	swap_a(stack_a);
+	swap_b(stack_b);
 	printf("ss\n");
 }
-
-*/

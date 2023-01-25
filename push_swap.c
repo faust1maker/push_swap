@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:55:24 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/18 10:39:29 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:11:20 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,43 @@ int	main(int ac, char **av)
 	temp_clone1 = stack_a;
 	while (temp_clone1)
 	{
-		printf ("%d \n", (int)temp_clone1->content);
+		printf ("CONTENT : %d", temp_clone1->content);
+		printf (" | INDEX : %d \n", temp_clone1->index);
 		temp_clone1 = temp_clone1->next;
 	}
 
 	// MANEUVERS
 	
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	//push_b(&stack_a, &stack_b);
-	//push_b(&stack_a, &stack_b);
-	//push_b(&stack_a, &stack_b);
-	
-	push_b(&stack_a, &stack_b);
-	
-	swap_a(&stack_a);
-	push_a(&stack_a, &stack_b);
-	swap_b(&stack_b);
+	//rotate_a(&stack_a);
+	//rotate_a(&stack_a);
+	//rotate_a(&stack_a);
 
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//swap_a(&stack_a);
+	//push_a(&stack_a, &stack_b);
+	//swap_b(&stack_b);
 
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+
+	//rotate_b(&stack_b);
+	//rotate_b(&stack_b);
+	//rotate_b(&stack_b);
+
+	//reverse_rotate_a(&stack_a);
+	//reverse_rotate_b(&stack_b);
+	//push_a(&stack_a, &stack_b);
+	//push_a(&stack_a, &stack_b);
+
+	//double_reverse_rotate(&stack_a, &stack_b);
+	
 	/*
 	push_b(&stack_a, &stack_b);
 	push_b(&stack_a, &stack_b);
@@ -82,6 +99,7 @@ int	main(int ac, char **av)
 	push_b(&stack_a, &stack_b);
 	push_a(&stack_a, &stack_b);
 	*/
+
 	// REPRINTING TO VERIFY
 
 	printf("STACK_A AFTER_OP : \n");
@@ -93,7 +111,7 @@ int	main(int ac, char **av)
 	}
 
 	temp_clone3 = stack_b;
-	printf("STACK_B AFTER_OP: \n");
+	printf("STACK_B AFTER_OP : \n");
 	while (temp_clone3)
 	{
 		printf ("%d \n", temp_clone3->content);

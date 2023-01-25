@@ -6,11 +6,49 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:52:35 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/18 10:38:29 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:26:13 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_list	*get_minimum(t_list **stack)
+{
+	t_list	*head;
+	t_list	*minimum;
+	int		has_minimum;
+
+	minimum = NULL;
+	has_minimum = 0;
+	head = *stack;
+	if (head)
+	{
+		while (head)
+		{
+			if ((head->index == 0) && ((!has_minimum) || (head->content < minimum->content)))
+			{
+				minimum = head;
+				has_minimum = 1;
+			}
+			head = head->next;
+		}
+	}
+	return (minimum);
+}
+
+void	ft_indexing_stack(t_list **stack)
+{
+	t_list	*head;
+	int		index;
+
+	index = 0;
+	head = get_minimum(stack);
+	while (head)
+	{
+		head->index = index++;
+		head = get_minimum(stack);
+	}
+}
 
 int	ft_atoi(char *str)
 {
@@ -37,54 +75,23 @@ int	ft_atoi(char *str)
 	return (res * sign);
 }
 
-t_list	*ft_lstnew(int input)
-{
-	t_list	*new_list;
-
-	new_list = malloc(sizeof(t_list));
-	if (!new_list)
-		return (NULL);
-	new_list->content = input;
-	new_list->next = NULL;
-	return (new_list);
-}
-
-void	ft_lstadd_front(t_list **pile, t_list *new)
-{
-	if (pile != NULL)
-	{
-		new->next = *pile;
-		*pile = new;
-	}
-}
-
-void	ft_pop_element(t_list **pile)
-{
-	t_list	*temp;
-
-	if (*pile == NULL)
-		return ;
-	temp = *pile;
-	*pile = (*pile)->next;
-	free(temp);
-}
-
 t_list	*ft_master_parser(char **av)
 {
 	int		i;
 	int		input;
-	t_list	*pile;
+	t_list	*list;
 
-	pile = NULL;
+	list = NULL;
 	i = 1;
 	input = 0;
 	while (av[i])
 	{
 		input = ft_atoi(av[i]);
-		ft_lstadd_front(&pile, ft_lstnew(input));
+		ft_lstadd_back(&list, ft_lstnew(input));
 		i++;
 	}
-	if (!ft_check_duplicates(pile))
+	if (!ft_check_duplicates(list))
 		return (NULL);
-	return (pile);
+	ft_indexing_stack(&list);
+	return (list);
 }

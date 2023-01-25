@@ -1,50 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_rotators.c                                      :+:      :+:    :+:   */
+/*   ps_reverse_rotators.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 12:06:51 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/20 10:05:25 by fbrisson         ###   ########.fr       */
+/*   Created: 2023/01/18 11:36:00 by fbrisson          #+#    #+#             */
+/*   Updated: 2023/01/18 16:32:14 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_a(t_list **stack_a)
+void	reverse_rotate_a(t_list **stack_a)
 {
 	t_list	*last;
+	t_list	*second_to_last;
 
 	if ((*stack_a == NULL) || ((*stack_a)->next == NULL))
 		return ;
-	last = *stack_a;
+	second_to_last = *stack_a;
+	last = (*stack_a)->next;
 	while (last->next != NULL)
+	{
+		second_to_last = last;
 		last = last->next;
+	}
+	second_to_last->next = NULL;
 	last->next = *stack_a;
-	*stack_a = (*stack_a)->next;
-	last->next->next = NULL;
-	printf("ra\n");
+	*stack_a = last;
+	printf("rra\n");
 }
 
-void	rotate_b(t_list **stack_b)
+void	reverse_rotate_b(t_list **stack_b)
 {
 	t_list	*last;
+	t_list	*second_to_last;
 
 	if ((*stack_b == NULL) || ((*stack_b)->next == NULL))
 		return ;
-	last = *stack_b;
+	second_to_last = *stack_b;
+	last = (*stack_b)->next;
 	while (last->next != NULL)
+	{
+		second_to_last = last;
 		last = last->next;
+	}
+	second_to_last->next = NULL;
 	last->next = *stack_b;
-	*stack_b = (*stack_b)->next;
-	last->next->next = NULL;
-	printf("rb\n");
+	*stack_b = last;
+	printf("rrb\n");
 }
 
-void	double_rotate(t_list **stack_a, t_list **stack_b)
+void	double_reverse_rotate(t_list **stack_a, t_list **stack_b)
 {
-	rotate_a(stack_a);
-	rotate_b(stack_b);
-	printf("rr\n");
+	reverse_rotate_a(stack_a);
+	reverse_rotate_b(stack_b);
+	printf("rrr\n");
 }

@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_pushers.c                                       :+:      :+:    :+:   */
+/*   ps_memory_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 12:06:30 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/20 10:01:22 by fbrisson         ###   ########.fr       */
+/*   Created: 2023/01/25 10:10:24 by fbrisson          #+#    #+#             */
+/*   Updated: 2023/01/25 10:16:32 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_list **stack_a, t_list **stack_b)
+int	stack_is_sorted(t_list **stack)
 {
-	if (*stack_b == NULL)
-		return ;
-	ft_lstadd_back(stack_a, ft_lstnew((*stack_b)->content));
-	*stack_b = (*stack_b)->next;
-	printf("pa\n");
+	t_list	*head;
+
+	head = *stack;
+	while (head && head->next)
+	{
+		if (head->content > head->next->content)
+			return (0);
+		head = head->next;
+	}
+	return (1);
 }
 
-void	push_b(t_list **stack_a, t_list **stack_b)
+void	free_stack(t_list **stack)
 {
-	if (*stack_a == NULL)
-		return ;
-	ft_lstadd_back(stack_b, ft_lstnew((*stack_a)->content));
-	*stack_a = (*stack_a)->next;
-	printf("pb\n");
+	t_list	*head;
+	t_list	*temp;
+
+	head = *stack;
+	while (head)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+	free(stack);
 }
