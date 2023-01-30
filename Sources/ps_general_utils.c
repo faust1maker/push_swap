@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:44:11 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/28 12:23:48 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:19:07 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	stack_is_sorted(t_list **stack)
 	head = *stack;
 	while (head && head->next)
 	{
-		if (head->content > head->next->content)
+		if (head->index > head->next->index)
 			return (0);
 		head = head->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:47:06 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/28 12:23:56 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:36:33 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ t_list	*get_minimum(t_list **stack);
 
 int	ft_list_size(t_list *list);
 t_list	*ft_lstlast(t_list *list);
-t_list	*ft_get_previous(t_list *head, t_list *element);
 
 // GENERAL UTILS
 

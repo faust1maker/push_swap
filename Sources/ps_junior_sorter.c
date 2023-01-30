@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:26:24 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/28 12:18:03 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:22:26 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	ft_get_min(t_list **stack, int ref_value)
 
 	head = *stack;
 	min = head->index;
-	while (head->next)
+	while (head)
 	{
-		head = head->next;
 		if ((head->index < min) && head->index != ref_value)
 			min = head->index;
+		head = head->next;
 	}
 	return (min);
 }

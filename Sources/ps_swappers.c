@@ -6,12 +6,13 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:04:34 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/28 10:43:36 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:54:01 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void 	swap(t_list **stack)
+
+void	swap(t_list **stack)
 {
 	t_list	*head;
 	t_list	*next;

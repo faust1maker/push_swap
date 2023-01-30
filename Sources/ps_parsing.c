@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:52:35 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/27 15:51:37 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:00:00 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ t_list	*get_minimum(t_list **stack)
 	{
 		while (head)
 		{
-			if ((head->index == -1) && ((!has_minimum) || (head->content < minimum->content)))
+			if ((head->index == -1)
+				&& (!has_minimum || head->content < minimum->content))
 			{
 				minimum = head;
 				has_minimum = 1;
@@ -52,9 +53,9 @@ void	ft_indexing_stack(t_list **stack)
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	sign;
 	long int	res;
+	int			i;
+	int			sign;
 
 	i = 0;
 	while ((str[i] == 32) || (str[i] >= 9 && str[i] <= 13))

@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 10:58:57 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/28 12:10:09 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:43:00 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ void	ft_radix_sorter(t_list **stack_a, t_list **stack_b)
 	int		i;
 	int		j;
 	int		max_bits;
+	int		size;
 
 	head_a = *stack_a;
 	max_bits = get_max_bits(stack_a);
+	size = ft_list_size(head_a);
 	i = -1;
 	while (++i < max_bits)
 	{
 		j = -1;
-		while (++j < ft_list_size(*stack_a))
+		while (++j < size)
 		{
 			head_a = *stack_a;
 			if (((head_a->index >> i) & 1) == 1)

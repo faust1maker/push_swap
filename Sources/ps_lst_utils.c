@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:25:44 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/27 15:56:22 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:36:25 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@ t_list	*ft_lstnew(int input)
 
 t_list	*ft_lstlast(t_list *list)
 {
-	if (!list)
-		return (NULL);
-	while (list->next != NULL)
-		list = list->next;
-	return (list);
+	t_list	*temp;
+
+	temp = list;
+	while (temp->next)
+	{
+		temp = temp->next;
+		if (temp->next == NULL)
+			return (temp);
+	}
+	return (temp);
 }
 
 void	ft_lstadd_back(t_list **list, t_list *new)
@@ -61,22 +66,4 @@ int	ft_list_size(t_list *list)
 		list = list->next;
 	}
 	return (size);
-}
-
-t_list	*ft_get_previous(t_list *head, t_list *element)
-{
-	t_list *temp;
-
-	temp = head;
-	if ((temp == NULL) || (element == NULL))
-		return (NULL);
-	if (temp == element)
-		return (NULL);
-	while (temp->next != NULL)
-	{
-		if (temp->next == element)
-			return (temp);
-		temp = temp->next;
-	}
-	return (NULL);
 }

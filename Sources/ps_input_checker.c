@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:53:21 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/27 15:41:40 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:59:02 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	ft_check_duplicates(t_list *pile)
 
 int	ft_int_overflow_checker(char *str)
 {
-	int	i;
-	int	longx2_counter;
 	long int	res;
+	int			i;
+	int			longx2_counter;
 
 	i = 0;
 	while ((str[i] == 32) || (str[i] >= 9 && str[i] <= 13))
@@ -65,7 +65,8 @@ int	ft_format_checker(char *str)
 	int	i;
 
 	i = 0;
-	if (((str[i] == 45) || (str[i] == 43)) && !(str[i + 1] >= 48 && str[i + 1] <= 57))
+	if (((str[i] == 45) || (str[i] == 43))
+		&& !(str[i + 1] >= 48 && str[i + 1] <= 57))
 		return (0);
 	else
 		i++;
