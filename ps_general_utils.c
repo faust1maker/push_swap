@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_memory_manager.c                                :+:      :+:    :+:   */
+/*   ps_general_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 10:10:24 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/25 10:16:32 by fbrisson         ###   ########.fr       */
+/*   Created: 2023/01/26 09:44:11 by fbrisson          #+#    #+#             */
+/*   Updated: 2023/01/26 09:49:38 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_get_distance(t_list **stack, int index)
+{
+	t_list	*head;
+	int		distance;
+
+	distance = 0;
+	head = *stack;
+	while (head)
+	{
+		if (head->index == index)
+			break ;
+		distance++;
+		head = head->next;
+	}
+	return (distance);
+}
 
 int	stack_is_sorted(t_list **stack)
 {

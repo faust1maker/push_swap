@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:26:24 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/26 10:01:20 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:18:03 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,29 @@ void	ft_sort_3(t_list **stack_a)
 	int		next_min;
 
 	head = *stack_a;
-	min = ft_get_min(stack_a, 0);
+	min = ft_get_min(stack_a, -1);
 	next_min = ft_get_min(stack_a, min);
 	if (head->index == min && head->next->index != next_min)
 	{
-		rotate_a(stack_a);
-		swap_a(stack_a);
-		reverse_rotate_a(stack_a);
+		ra(stack_a);
+		sa(stack_a);
+		rra(stack_a);
 	}
 	else if (head->index == next_min)
 	{
 		if (head->next->index == min)
-			swap_a(stack_a);
+			sa(stack_a);
 		else
-			reverse_rotate_a(stack_a);
+			rra(stack_a);
 	}
 	else
 	{
 		if (head->next->index == min)
-			rotate_a(stack_a);
+			ra(stack_a);
 		else
 		{
-			swap_a(stack_a);
-			reverse_rotate_a(stack_a);
+			sa(stack_a);
+			rra(stack_a);
 		}
 	}
 }
@@ -66,47 +66,47 @@ void	ft_sort_4(t_list **stack_a, t_list **stack_b)
 {
 	int	distance;
 
-	distance = ft_get_distance(stack_a, 0);
+	distance = ft_get_distance(stack_a, -1);
 	if (distance == 1)
-		rotate_a(stack_a);
+		ra(stack_a);
 	else if (distance == 2)
 	{
-		rotate_a(stack_a);
-		rotate_a(stack_a);
+		ra(stack_a);
+		ra(stack_a);
 	}
 	else if (distance == 3)
-		reverse_rotate_a(stack_a);
+		rra(stack_a);
 	if (stack_is_sorted(stack_a))
 		return ;
-	push_b(stack_a, stack_b);
-	sort_3(stack_a);
-	push_a(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	ft_sort_3(stack_a);
+	pa(stack_b, stack_a);
 }
 
 void	ft_sort_5(t_list **stack_a, t_list **stack_b)
 {
 	int	distance;
 
-	distance = ft_get_distance(stack_a, ft_get_min(stack_a, 0));
+	distance = ft_get_distance(stack_a, ft_get_min(stack_a, -1));
 	if (distance == 1)
-		rotate_a(stack_a);
+		ra(stack_a);
 	else if (distance == 2)
 	{
-		rotate_a(stack_a);
-		rotate_a(stack_a);
+		ra(stack_a);
+		ra(stack_a);
 	}
 	else if (distance == 3)
 	{
-		reverse_rotate_a(stack_a);
-		reverse_rotate_a(stack_a);
+		rra(stack_a);
+		rra(stack_a);
 	}
 	else if (distance == 4)
-		reverse_rotate_a(stack_a);
+		rra(stack_a);
 	if (stack_is_sorted(stack_a))
 		return ;
-	push_b(stack_a, stack_b);
+	pb(stack_a, stack_b);
 	ft_sort_4(stack_a, stack_b);
-	push_a(stack_a, stack_b);
+	pa(stack_b, stack_a);
 }
 
 void	ft_junior_sorter(t_list **stack_a, t_list **stack_b)
@@ -118,7 +118,7 @@ void	ft_junior_sorter(t_list **stack_a, t_list **stack_b)
 		return ;
 	size = ft_list_size(*stack_a);
 	if (size == 2)
-		swap_a(stack_a);
+		sa(stack_a);
 	else if (size == 3)
 		ft_sort_3(stack_a);
 	else if (size == 4)

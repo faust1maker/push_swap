@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:47:06 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/26 10:04:42 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:23:56 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,30 +52,38 @@ t_list	*ft_get_previous(t_list *head, t_list *element);
 int	ft_get_distance(t_list **stack, int index);
 int	ft_get_min(t_list **stack, int ref_value);
 int	stack_is_sorted(t_list **stack);
-void	free_stack(t_list **stack);
+void	ft_error_printer(void);
+void	free_stack(t_list *stack);
+void	ft_content_printer(t_list **stack, char *c);
 
 // LIST MANEUVERS
 
 void	ft_master_sorter(t_list **stack_a, t_list **stack_b);
 
-void	swap_a(t_list **stack_a);
-void	swap_b(t_list **stack_b);
-void	double_swap(t_list **stack_a, t_list **stack_b);
+void	swap(t_list **stack);
+void	sa(t_list **stack_a);
+void	sb(t_list **stack_b);
+void	ss(t_list **stack_a, t_list **stack_b);
 
-void	push_a(t_list **stack_a, t_list **stack_b);
-void	push_b(t_list **stack_a, t_list **stack_b);
+void	push(t_list **stack_src, t_list **stack_dest);
+void	pa(t_list **stack_b, t_list **stack_a);
+void	pb(t_list **stack_a, t_list **stack_b);
 
-void	rotate_a(t_list **stack_a);
-void	rotate_b(t_list **stack_b);
-void	double_rotate(t_list **stack_a, t_list **stack_b);
+void	rotate(t_list **stack);
+void	ra(t_list **stack_a);
+void	rb(t_list **stack_b);
+void	rr(t_list **stack_a, t_list **stack_b);
 
-void	reverse_rotate_a(t_list **stack_a);
-void	reverse_rotate_b(t_list **stack_b);
-void	double_reverse_rotate(t_list **stack_a, t_list **stack_b);
+void	reverse_rotate(t_list **stack);
+void	rra(t_list **stack_a);
+void	rrb(t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b);
 
 // SORTING FUNCTIONS
 
+int	get_max_bits(t_list **stack);
 void	ft_junior_sorter(t_list **stack_a, t_list **stack_b);
+void	ft_radix_sorter(t_list **stack_a, t_list **stack_b);
 void	ft_sort_3(t_list **stack_a);
 void	ft_sort_4(t_list **stack_a, t_list **stack_b);
 void	ft_sort_5(t_list **stack_a, t_list **stack_b);

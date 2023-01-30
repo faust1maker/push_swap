@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 09:54:11 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/26 10:14:41 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:10:30 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ void	ft_master_sorter(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_list_size(*stack_a) <= 5)
 		ft_junior_sorter(stack_a, stack_b);
-	else if (ft_list_size(*stack_a) > 5 && ft_list_size(*stack_a) <= 100)
-		ft_benjamin_radix(stack_a, stack_b);
 	else
-		ft_bigbrother_cost_calculator(stack_a, stack_b);
+		ft_radix_sorter(stack_a, stack_b);
 }
 
 int	main(int ac, char **av)
@@ -29,18 +27,21 @@ int	main(int ac, char **av)
 
 	if (!ft_input_checker(ac, av))
 	{
-		write (2, "Error\n", 6);
+		ft_error_printer();
 		return (0);
 	}
 	stack_a = ft_master_parser(av);
 	stack_b = NULL;
-	if (stack_is_sorted(stack_a))
+	if (stack_is_sorted(&stack_a))
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);
 		return (0);
 	}
-	ft_master_sorter(stack_a, stack_b);
+	ft_content_printer(&stack_a, "A");
+	ft_master_sorter(&stack_a, &stack_b);
+	ft_content_printer(&stack_a, "A");
+	ft_content_printer(&stack_b, "B");
 	free_stack(stack_a);
 	free_stack(stack_b);
 }
