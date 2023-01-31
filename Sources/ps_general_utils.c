@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:44:11 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:19:07 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:32:27 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,4 @@ void	free_stack(t_list *stack)
 void	ft_error_printer(void)
 {
 	write (2, "Error\n", 6);
-}
-
-void	ft_content_printer(t_list **stack, char *c)
-{
-	t_list	*temp_list;
-
-	temp_list = *stack;
-	while (temp_list)
-	{
-		printf ("[%s]CONTENT : %d", c, temp_list->content);
-		printf (" | INDEX : %d \n", temp_list->index);
-		temp_list = temp_list->next;
-	}
 }

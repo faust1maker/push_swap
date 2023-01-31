@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:53:21 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/31 14:18:48 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:35:30 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,10 @@ int	ft_format_checker(char *str)
 	return (1);
 }
 
-int	ft_input_checker(int ac, char **av)
+int	ft_input_checker(char **av)
 {
 	int	i;
 
-	if (ac < 2)
-		return (0);
 	i = 0;
 	while (av[++i])
 	{
