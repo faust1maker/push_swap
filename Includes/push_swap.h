@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:47:06 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:36:33 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:14:24 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ t_list	*ft_lstlast(t_list *list);
 
 // GENERAL UTILS
 
-int	ft_get_distance(t_list **stack, int index);
-int	ft_get_min(t_list **stack, int ref_value);
+int	determine_scenario(t_list **stack_a);
+int	ft_get_minimum(t_list **stack);
 int	stack_is_sorted(t_list **stack);
-void	ft_error_printer(void);
 void	free_stack(t_list *stack);
 void	ft_content_printer(t_list **stack, char *c);
+void	ft_error_printer(void);
+void	ft_pb_minimum(t_list **stack_a, t_list **stack_b, int min);
 
 // LIST MANEUVERS
 

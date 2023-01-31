@@ -6,106 +6,117 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:26:24 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/30 11:22:26 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:00:56 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_get_min(t_list **stack, int ref_value)
+int	ft_get_minimum(t_list **stack)
 {
 	t_list	*head;
 	int		min;
 
 	head = *stack;
 	min = head->index;
-	while (head)
+	while (head->next)
 	{
-		if ((head->index < min) && head->index != ref_value)
-			min = head->index;
 		head = head->next;
+		if ((head->index < min) && head->index != -1)
+			min = head->index;
 	}
 	return (min);
+}
+void	ft_pb_minimum(t_list **stack_a, t_list **stack_b, int min)
+{
+	t_list	*head;
+	t_list	*tail;
+
+	head = *stack_a;
+	tail = ft_lstlast(head);
+	while (head)
+	{
+		if (tail->index == min)
+		{
+			rra(stack_a);
+			pb(stack_a, stack_b);
+			break ;
+		}
+		if (head->index == min)
+		{
+			pb(stack_a, stack_b);
+			break ;
+		}
+		ra(stack_a);
+		head = *stack_a;
+	}
+}
+
+int	determine_scenario(t_list **stack_a)
+{
+	t_list	*elem_1;
+	t_list	*elem_2;
+	t_list	*elem_3;
+
+	elem_1 = *stack_a;
+	elem_2 = (*stack_a)->next;
+	elem_3 = (*stack_a)->next->next;
+	if (elem_2->index < elem_1->index && elem_1->index < elem_3->index)
+		return (1);
+	if (elem_3->index < elem_2->index && elem_2->index < elem_1->index)
+		return (2);
+	if (elem_2->index < elem_3->index && elem_3->index < elem_1->index)
+		return (3);
+	if (elem_1->index < elem_3->index && elem_3->index < elem_2->index)
+		return (4);
+	if (elem_3->index < elem_1->index && elem_1->index < elem_2->index)
+		return (5);
+	return (0);
 }
 
 void	ft_sort_3(t_list **stack_a)
 {
-	t_list	*head;
-	int		min;
-	int		next_min;
+	int	scenario;
 
-	head = *stack_a;
-	min = ft_get_min(stack_a, -1);
-	next_min = ft_get_min(stack_a, min);
-	if (head->index == min && head->next->index != next_min)
+	scenario = determine_scenario(stack_a);
+	if (scenario == 1)
+		sa(stack_a);
+	else if (scenario == 2)
 	{
-		ra(stack_a);
 		sa(stack_a);
 		rra(stack_a);
 	}
-	else if (head->index == next_min)
+	else if (scenario == 3)
+		ra(stack_a);
+	else if (scenario == 4)
 	{
-		if (head->next->index == min)
-			sa(stack_a);
-		else
-			rra(stack_a);
+		sa(stack_a);
+		ra(stack_a);
 	}
-	else
-	{
-		if (head->next->index == min)
-			ra(stack_a);
-		else
-		{
-			sa(stack_a);
-			rra(stack_a);
-		}
-	}
+	else if (scenario == 5)
+		rra(stack_a);
 }
 
 void	ft_sort_4(t_list **stack_a, t_list **stack_b)
 {
-	int	distance;
+	int	min;
 
-	distance = ft_get_distance(stack_a, -1);
-	if (distance == 1)
-		ra(stack_a);
-	else if (distance == 2)
-	{
-		ra(stack_a);
-		ra(stack_a);
-	}
-	else if (distance == 3)
-		rra(stack_a);
-	if (stack_is_sorted(stack_a))
-		return ;
-	pb(stack_a, stack_b);
+	min = ft_get_minimum(stack_a);
+	ft_pb_minimum(stack_a, stack_b, min);
 	ft_sort_3(stack_a);
 	pa(stack_b, stack_a);
 }
 
 void	ft_sort_5(t_list **stack_a, t_list **stack_b)
 {
-	int	distance;
+	int	min;
+	int	second_min;
 
-	distance = ft_get_distance(stack_a, ft_get_min(stack_a, -1));
-	if (distance == 1)
-		ra(stack_a);
-	else if (distance == 2)
-	{
-		ra(stack_a);
-		ra(stack_a);
-	}
-	else if (distance == 3)
-	{
-		rra(stack_a);
-		rra(stack_a);
-	}
-	else if (distance == 4)
-		rra(stack_a);
-	if (stack_is_sorted(stack_a))
-		return ;
-	pb(stack_a, stack_b);
-	ft_sort_4(stack_a, stack_b);
+	min = ft_get_minimum(stack_a);
+	ft_pb_minimum(stack_a, stack_b, min);
+	second_min = ft_get_minimum(stack_a);
+	ft_pb_minimum(stack_a, stack_b, second_min);
+	ft_sort_3(stack_a);
+	pa(stack_b, stack_a);
 	pa(stack_b, stack_a);
 }
 
