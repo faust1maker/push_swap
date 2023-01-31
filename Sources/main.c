@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 09:54:11 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/31 14:03:20 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:18:24 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ int	main(int ac, char **av)
 		free_stack(stack_b);
 		return (0);
 	}
-	ft_content_printer(&stack_a, "A");
 	ft_master_sorter(&stack_a, &stack_b);
-	ft_content_printer(&stack_a, "A");
-	ft_content_printer(&stack_b, "B");
 	free_stack(stack_a);
 	free_stack(stack_b);
+	return (0);
 }

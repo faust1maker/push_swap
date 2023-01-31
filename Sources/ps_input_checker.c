@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:53:21 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:59:02 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:18:48 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_format_checker(char *str)
 	if (((str[i] == 45) || (str[i] == 43))
 		&& !(str[i + 1] >= 48 && str[i + 1] <= 57))
 		return (0);
-	else
+	if ((str[i] == 45) || (str[i] == 43))
 		i++;
 	while (str[i])
 	{

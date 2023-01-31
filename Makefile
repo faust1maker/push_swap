@@ -6,7 +6,7 @@
 #    By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 12:42:06 by fbrisson          #+#    #+#              #
-#    Updated: 2023/01/30 14:29:20 by fbrisson         ###   ########.fr        #
+#    Updated: 2023/01/31 15:21:37 by fbrisson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SOURCES = Sources/main.c              		\
 	Sources/ps_general_utils.c    		\
 	Sources/ps_input_checker.c    		\
 	Sources/ps_junior_sorter.c    		\
+	Sources/ps_junior_sorter_utils.c	\
 	Sources/ps_lst_utils.c        		\
 	Sources/ps_parsing.c 	      		\
 	Sources/ps_pushers.c          		\
