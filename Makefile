@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: fbrisson <fbrisson@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 12:42:06 by fbrisson          #+#    #+#              #
-#    Updated: 2023/01/31 15:21:37 by fbrisson         ###   ########.fr        #
+#    Updated: 2023/02/27 11:41:06 by fbrisson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,18 @@ SHELL = /bin/zsh
 
 NAME = push_swap
 
-SOURCES = Sources/main.c              		\
-	Sources/ps_general_utils.c    		\
-	Sources/ps_input_checker.c    		\
-	Sources/ps_junior_sorter.c    		\
-	Sources/ps_junior_sorter_utils.c	\
-	Sources/ps_lst_utils.c        		\
-	Sources/ps_parsing.c 	      		\
-	Sources/ps_pushers.c          		\
-	Sources/ps_radix_sorter.c     		\
-	Sources/ps_reverse_rotators.c 		\
-	Sources/ps_rotators.c         		\
-	Sources/ps_swappers.c
+SOURCES = sources/main.c              		\
+	sources/ps_general_utils.c    		\
+	sources/ps_input_checker.c    		\
+	sources/ps_junior_sorter.c    		\
+	sources/ps_junior_sorter_utils.c	\
+	sources/ps_lst_utils.c        		\
+	sources/ps_parsing.c 	      		\
+	sources/ps_pushers.c          		\
+	sources/ps_radix_sorter.c     		\
+	sources/ps_reverse_rotators.c 		\
+	sources/ps_rotators.c         		\
+	sources/ps_swappers.c
 
 OBJECTS = ${SOURCES:.c=.o}
 
@@ -33,23 +33,26 @@ COMPILER = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-HEADERS = -I Includes/
+HEADERS = -I includes/
+
+INCLUDE = ./includes/push_swap.h
 
 CLEANER = rm -f
 
-nb:=1
+.c.o:
+	@printf "\033[0;3%dmOBJECT [\033[0m" "$(COLOR_LIGHT_BLUE)"
+	@printf "\033[0;3%dm%d\033[0m" "$(COLOR_YELLOW)" "$(nb)"
+	@printf "\033[0;3%dm] -ready\033[0m\n" "$(COLOR_LIGHT_BLUE)"
+	@printf "\033[0;3%dmCompiling... \033[0m" "$(COLOR_BLUE)"
+	@if ( ${COMPILER} ${CFLAGS} ${HEADERS} -c $< -o ${<:.c=.o} );\
+	then; printf "\033[0;3%dmSUCCESS\033[0m\n" "$(COLOR_GREEN)";\
+	else; printf "\033[0;3%dmFAILURE\033[0m\n" "$(COLOR_RED)";\
+	fi
+	$(eval nb=$(shell echo $$(($(nb)+1))))
 
-COLOR_BLUE:=4
 
-COLOR_LIGHT_BLUE:=6
-
-COLOR_YELLOW:=3
-
-COLOR_GREEN:=2
-
-COLOR_RED:=1
-
-all: ${NAME}	
+${NAME}: ${OBJECTS}
+	@${COMPILER} ${CFLAGS} ${OBJECTS} -o ${NAME}
 	@printf "\033[0;39m   (づ ￣ ³￣)づ   "
 	@printf "\033[0;34mC "
 	@printf "\033[0;36mO "
@@ -76,21 +79,19 @@ all: ${NAME}
 	@printf "\033[0;32mL "
 	@printf "\033[0;39m    ~\(≧▽≦)/~ \033[0m\n"
 
-.c.o:
-	@printf "\033[0;3%dmOBJECT [\033[0m" "$(COLOR_LIGHT_BLUE)"
-	@printf "\033[0;3%dm%d\033[0m" "$(COLOR_YELLOW)" "$(nb)"
-	@printf "\033[0;3%dm] -ready\033[0m\n" "$(COLOR_LIGHT_BLUE)"
-	@printf "\033[0;3%dmCompiling... \033[0m" "$(COLOR_BLUE)"
-	@if ( ${COMPILER} ${CFLAGS} ${HEADERS} -c $< -o ${<:.c=.o} );\
-	then; printf "\033[0;3%dmSUCCESS\033[0m\n" "$(COLOR_GREEN)";\
-	else; printf "\033[0;3%dmFAILURE\033[0m\n" "$(COLOR_RED)";\
-	fi
-	$(eval nb=$(shell echo $$(($(nb)+1))))
+nb:=1
 
+COLOR_BLUE:=4
 
-${NAME}: ${OBJECTS}
-	@${COMPILER} ${CFLAGS} ${OBJECTS} -o ${NAME}
+COLOR_LIGHT_BLUE:=6
 
+COLOR_YELLOW:=3
+
+COLOR_GREEN:=2
+
+COLOR_RED:=1
+
+all: ${NAME}
 
 clean:
 	@printf "\033[0;39m   (っ^з^)♪♬  \033[0m\n"
@@ -99,7 +100,6 @@ clean:
 	then; printf "\033[0;3%dmSUCCESS\033[0m\n" "$(COLOR_GREEN)";\
 	else; printf "\033[0;3%dmFAILURE\033[0m\n" "$(COLOR_RED)";\
 	fi
-
 
 fclean: clean
 	@printf "\033[0;39m   (ﾉ☉ヮ⚆)ﾉ   \033[0m\n"

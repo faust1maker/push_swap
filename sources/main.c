@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 09:54:11 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/31 15:37:07 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/02/27 08:57:01 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ int	main(int ac, char **av)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	if (ac < 2)
-		return (0);
-	if (!ft_input_checker(av))
+	if ((!ft_input_checker(av)) || (ac < 1))
 	{
 		ft_error_printer();
 		return (0);

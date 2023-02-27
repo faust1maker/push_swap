@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbrisson <fbrisson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:52:35 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/31 14:20:46 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:05:08 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ t_list	*ft_master_parser(char **av)
 
 	list = NULL;
 	i = 1;
-	input = 0;
 	while (av[i])
 	{
 		input = ft_atoi(av[i]);
@@ -92,10 +91,7 @@ t_list	*ft_master_parser(char **av)
 		i++;
 	}
 	if (!ft_check_duplicates(list))
-	{
-		ft_error_printer();
-		return (NULL);
-	}
+		return (ft_error_printer(), NULL);
 	ft_indexing_stack(&list);
 	return (list);
 }
