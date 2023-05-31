@@ -6,7 +6,7 @@
 /*   By: fbrisson <fbrisson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:52:35 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/02/27 10:05:08 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/05/31 14:27:56 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,13 @@ t_list	*ft_master_parser(char **av)
 	while (av[i])
 	{
 		input = ft_atoi(av[i]);
-		ft_lstadd_back(&list, ft_lstnew(input));
-		i++;
+		if (ft_lstadd_back(&list, ft_lstnew(input)))
+			i++;
+		else
+			return (ft_error_printer(), free_stack(list), NULL);
 	}
 	if (!ft_check_duplicates(list))
-		return (ft_error_printer(), NULL);
+		return (free_stack(list), ft_error_printer(), NULL);
 	ft_indexing_stack(&list);
 	return (list);
 }

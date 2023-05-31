@@ -6,7 +6,7 @@
 #    By: fbrisson <fbrisson@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 12:42:06 by fbrisson          #+#    #+#              #
-#    Updated: 2023/02/27 11:41:06 by fbrisson         ###   ########.fr        #
+#    Updated: 2023/03/01 12:50:25 by fbrisson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJECTS = ${SOURCES:.c=.o}
 
 COMPILER = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 HEADERS = -I includes/
 

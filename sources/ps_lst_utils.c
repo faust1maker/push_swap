@@ -6,7 +6,7 @@
 /*   By: fbrisson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 09:25:44 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/01/30 12:36:25 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:56:04 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ t_list	*ft_lstlast(t_list *list)
 	return (temp);
 }
 
-void	ft_lstadd_back(t_list **list, t_list *new)
+int	ft_lstadd_back(t_list **list, t_list *new)
 {
 	t_list	*temp;
 
+	if (new == NULL)
+		return (0);
 	if (list)
 	{
 		if (*list == NULL)
@@ -53,6 +55,7 @@ void	ft_lstadd_back(t_list **list, t_list *new)
 			temp->next = new;
 		}
 	}
+	return (1);
 }
 
 int	ft_list_size(t_list *list)

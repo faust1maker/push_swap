@@ -6,7 +6,7 @@
 /*   By: fbrisson <fbrisson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:47:06 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/02/27 11:16:06 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:18:30 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
@@ -29,7 +30,6 @@ t_list	*ft_lstnew(int input);
 t_list	*ft_master_parser(char **av);
 t_list	*get_minimum(t_list **stack);
 void	ft_indexing_stack(t_list **stack);
-void	ft_lstadd_back(t_list **list, t_list *new);
 void	free_stack(t_list *stack);
 void	ft_error_printer(void);
 void	ft_pb_minimum(t_list **stack_a, t_list **stack_b, int min);
@@ -60,6 +60,7 @@ int		ft_input_checker(char **av);
 int		ft_int_overflow_checker(char *str);
 int		ft_atoi(char *str);
 int		ft_list_size(t_list *list);
+int		ft_lstadd_back(t_list **list, t_list *new);
 int		determine_scenario(t_list **stack_a);
 int		ft_get_minimum(t_list **stack);
 int		stack_is_sorted(t_list **stack);
