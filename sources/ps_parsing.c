@@ -6,7 +6,7 @@
 /*   By: fbrisson <fbrisson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:52:35 by fbrisson          #+#    #+#             */
-/*   Updated: 2023/05/31 14:27:56 by fbrisson         ###   ########.fr       */
+/*   Updated: 2023/06/13 11:22:39 by fbrisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_list	*ft_master_parser(char **av)
 			return (ft_error_printer(), free_stack(list), NULL);
 	}
 	if (!ft_check_duplicates(list))
-		return (free_stack(list), ft_error_printer(), NULL);
+		return (ft_error_printer(), free_stack(list),  NULL);
 	ft_indexing_stack(&list);
 	return (list);
 }
